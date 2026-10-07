@@ -1,6 +1,6 @@
 # Dot — your purple robot companion
 
-Dot is a personal coding pet by [Sann Lynn Htun](https://github.com/sannlynnhtun-coding), inspired by a purple .NET robot reference. It has a calm blink, a hover jump, task reactions, and sixteen look directions.
+Dot is a purple robot coding companion inspired by a .NET robot reference. It has a calm blink, a hover jump, task reactions, and sixteen look directions.
 
 ![Dot animations](previews/all-states.gif)
 
@@ -111,4 +111,4 @@ The original reference image and private account-specific installation ID are no
 
 ## Credits and reuse
 
-Created for Sann Lynn Htun using the Pets creation workflow and generated artwork. The supplied reference inspired the purple robot design; Dot's badge is unlettered. This is a personal companion project and does not claim affiliation with Microsoft or OpenAI. Public availability enables the installation flow above; no separate broad redistribution license is declared in this repository.
+Created using the Pets creation workflow and generated artwork. The supplied reference inspired the purple robot design; Dot's badge is unlettered. This is a coding companion project and does not claim affiliation with Microsoft or OpenAI. Public availability enables the installation flow above; no separate broad redistribution license is declared in this repository.
