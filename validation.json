@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "atlas": "assets/dot.png",
+  "encoded_bytes": 1416244,
+  "sha256": "1005430715f3b275ef63cfa54a8c74ce10cc816b3dd2fed2cdd6afae9cce2df9",
+  "jump": {
+    "idle_baseline": 202,
+    "jump_baselines": [
+      202,
+      186,
+      152,
+      183,
+      202
+    ],
+    "airborne_lift_pixels": 50,
+    "landing_delta_pixels": 0
+  },
+  "look_registration": {
+    "neutral_center_x": 95.5,
+    "look_centers_x": [
+      92.5,
+      91.5,
+      91.0,
+      91.5,
+      93.0,
+      93.0,
+      93.5,
+      94.5,
+      94.0,
+      94.5,
+      93.5,
+      93.5,
+      93.5,
+      94.5,
+      95.0,
+      96.0
+    ],
+    "look_widths": [
+      69,
+      71,
+      72,
+      73,
+      72,
+      70,
+      69,
+      69,
+      70,
+      73,
+      73,
+      73,
+      73,
+      73,
+      70,
+      70
+    ],
+    "maximum_center_drift_pixels": 4.5,
+    "maximum_width_ratio": 1.0579710144927537
+  },
+  "errors": [],
+  "warnings": [
+    "look direction 022.5 accepted with a reviewed warning",
+    "look direction 067.5 accepted with a reviewed warning",
+    "look direction 112.5 accepted with a reviewed warning",
+    "look direction 202.5 accepted with a reviewed warning",
+    "look direction 247.5 accepted with a reviewed warning",
+    "look direction 292.5 accepted with a reviewed warning",
+    "337.5->000 diff is a local outlier (1498 pixels vs neighbor average 715)"
+  ]
+}

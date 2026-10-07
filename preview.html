@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dot pet preview</title>
+<style>
+body{font:16px system-ui,sans-serif;background:#f5f1ff;color:#32215a;max-width:850px;margin:40px auto;padding:0 24px}h1{font-size:36px}.stage{display:flex;align-items:center;justify-content:center;min-height:270px;background:white;border:1px solid #dcd1f4;border-radius:16px;margin:24px 0}#pet{width:192px;height:208px;background-image:url('assets/dot.png');background-repeat:no-repeat}button,select{font:inherit;border:1px solid #a38acb;background:white;padding:8px 12px;border-radius:8px;margin:4px;color:inherit}button[aria-pressed=true]{background:#693dcc;color:white}label{display:block;margin-top:20px}a{color:#6331b7}.muted{color:#66577e}
+</style>
+<h1>Meet Dot</h1>
+<p>A purple robot companion. This preview plays the repository's sprite sheet.</p>
+<div class="stage"><div id="pet" role="img" aria-label="Dot in idle pose"></div></div>
+<div id="states" aria-label="Choose an animation"></div>
+<label for="look">Look direction</label><select id="look"><option value="">Choose a direction</option></select>
+<p id="status" aria-live="polite">Loading sprite…</p>
+<p><a href="https://chatgpt.com/s/sharepet_6ac608219b8081918a7bff00e61c3087">Adopt through Pets</a> · <a href="README.md">Installation instructions</a></p>
+<p class="muted">Local preview only. Native selection requires a host with authenticated Pets tools.</p>
+<script>
+const names=['idle','running-right','running-left','waving','jumping','failed','waiting','running','review'];
+const timings=[[280,110,110,140,140,320],[120,120,120,120,120,120,120,220],[120,120,120,120,120,120,120,220],[140,140,140,280],[140,140,140,140,280],[140,140,140,140,140,140,140,240],[150,150,150,150,150,260],[120,120,120,120,120,220],[150,150,150,150,150,280]];
+const directions=['up','up-right','up-right','up-right','right','down-right','down-right','down-right','down','down-left','down-left','down-left','left','up-left','up-left','up-left'];
+const pet=document.getElementById('pet'),status=document.getElementById('status'),look=document.getElementById('look');
+let timer=null,row=0,frame=0;
+function draw(r,c,label){pet.style.backgroundPosition=`-${c*192}px -${r*208}px`;pet.setAttribute('aria-label',`Dot: ${label}`)}
+function tick(){draw(row,frame,names[row]);const delay=timings[row][frame];frame=(frame+1)%timings[row].length;if(!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setTimeout(tick,delay)}
+function choose(i){clearTimeout(timer);row=i;frame=0;look.value='';document.querySelectorAll('#states button').forEach((b,n)=>b.setAttribute('aria-pressed',String(n===i)));status.textContent=`Animation: ${names[i]}${i===7?' (active work)':''}`;tick()}
+names.forEach((name,i)=>{const b=document.createElement('button');b.textContent=i===7?'active work':name;b.type='button';b.onclick=()=>choose(i);document.getElementById('states').append(b)});
+directions.forEach((name,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i*22.5}° — ${name}`;look.append(o)});
+look.onchange=()=>{if(look.value===''){choose(0);return}clearTimeout(timer);const i=Number(look.value);document.querySelectorAll('#states button').forEach(b=>b.setAttribute('aria-pressed','false'));draw(9+Math.floor(i/8),i%8,directions[i]);status.textContent=`Look: ${i*22.5}° ${directions[i]}`};
+const image=new Image();image.onload=()=>choose(0);image.onerror=()=>{status.textContent='Sprite failed to load. Serve this repository and confirm assets/dot.png exists.'};image.src='assets/dot.png';
+</script>
+</html>
